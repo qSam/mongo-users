@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/qSam/mongo-users/issues"
   },
-  "homepage": "https://github.com/qSam/mongo-users#readme"
+  "homepage": "https://github.com/qSam/mongo-users#readme",
+  "dependencies": {
+    "mocha": "^3.2.0",
+    "mongoose": "^4.9.4",
+    "nodemon": "^1.11.0"
+  }
 }

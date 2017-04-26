@@ -5,7 +5,7 @@ describe('Reading users out of the database', () => {
   "use strict";
   let joe;
 
-  beforeEach( () => {
+  beforeEach( (done) => {
     joe = new User({ name: 'Joe'});
     joe.save()
       .then( () => done() );
@@ -15,6 +15,7 @@ describe('Reading users out of the database', () => {
     User.find({name: 'Joe'})
         .then( (users) => {
             console.log(users);
+            assert(users[0]._id.toString() === joe.id.toString());
             done();
         });
   });

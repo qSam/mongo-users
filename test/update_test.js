@@ -12,17 +12,28 @@ describe('Updating records', () => {
       .then( () => done() );
   });
 
-  it('instance set and save', () => {
+  function assertName(operation, done) {
+    operation
+    .then( () => User.find({}) )
+    .then( (users) => {
+      assert(users.length === 1);
+      assert(users[0].name === 'Alex');
+      done();
+    });
+
+  }
+
+  it('instance set and save', (done) => {
       console.log(joe);
       joe.set('name', 'Alex');
       console.log(joe);
-      joe.save()
-        .then( () => User.find({}) )
-        .then( (users) => {
-          assert(users.length === 1);
-          assert(users[0].name === 'Alex');
-          done();
-        });
+      assertName(joe.save(), done);
+
+  });
+
+  it('A model instance can update', (done) => {
+    assertName(joe.update({ name: 'Alex'}), done);
+
   });
 
 
